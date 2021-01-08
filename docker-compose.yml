@@ -9,6 +9,9 @@ services:
     volumes:
       - ./data:/data:rw
       - ./data/appsettings.json:/srv/www/appsettings.json
+# If Traefik comment ports
+    ports:
+      - "5800:5800"
 # Traefik
     # networks:
       # - proxy
