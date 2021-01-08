@@ -7,4 +7,7 @@ cd wg-tunel
 docker-composer up -d
 ```
 
-If you use Traefik comment Ports and uncommen label and network
+If you use Traefik:
+- comment ports 
+- uncomment label and network
+- change domain and traefik network for you setting
