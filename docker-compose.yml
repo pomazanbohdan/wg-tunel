@@ -5,13 +5,13 @@ services:
     image: whyvra/tunnel
     container_name: wg-tunnel
     hostname: wg-tunnel
-    networks:
-      - proxy
     restart: always
     volumes:
       - ./data:/data:rw
       - ./data/appsettings.json:/srv/www/appsettings.json
 # Traefik
+    # networks:
+      # - proxy
     # labels:
       # - "traefik.enable=true"
       # - "traefik.http.routers.wg-tunnel.entrypoints=web"
