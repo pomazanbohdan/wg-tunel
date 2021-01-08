@@ -10,7 +10,7 @@ services:
     restart: always
     volumes:
       - ./data:/data:rw
-      - ./appsettings.json:/srv/www/appsettings.json
+      - ./data/appsettings.json:/srv/www/appsettings.json
 # Traefik
     # labels:
       # - "traefik.enable=true"
