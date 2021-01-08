@@ -1,30 +1,32 @@
 version: '3.7'
 
-networks:
-  proxy:
-    external: true
-
 services:
-  wg:
+  wg-tunnel:
     image: whyvra/tunnel
-    container_name: wg
-    hostname: wg
+    container_name: wg-tunnel
+    hostname: wg-tunnel
     networks:
       - proxy
     restart: always
     volumes:
       - ./data:/data:rw
       - ./appsettings.json:/srv/www/appsettings.json
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.wg.entrypoints=web"
-      - "traefik.http.routers.wg.rule=Host(`wg.pomazan.xyz`)"
-      - "traefik.http.middlewares.wg-https-redirect.redirectscheme.scheme=websecure"
-      - "traefik.http.routers.wg.middlewares=wg-https-redirect"
-      - "traefik.http.routers.wg-secure.entrypoints=websecure"
-      - "traefik.http.routers.wg-secure.rule=Host(`wg.pomazan.xyz`)"
-      - "traefik.http.routers.wg-secure.tls=true"
-      - "traefik.http.routers.wg-secure.tls.certresolver=cloudflare"
-      - "traefik.http.routers.wg-secure.service=wg"
-      - "traefik.http.services.wg.loadbalancer.server.port=5800"
-      - "traefik.docker.network=proxy"
+# Traefik
+    # labels:
+      # - "traefik.enable=true"
+      # - "traefik.http.routers.wg-tunnel.entrypoints=web"
+      # - "traefik.http.routers.wg-tunnel.rule=Host(`youdomain.com`)"
+      # - "traefik.http.middlewares.wg-tunnel-https-redirect.redirectscheme.scheme=websecure"
+      # - "traefik.http.routers.wg-tunnel.middlewares=wg-tunnel-https-redirect"
+      # - "traefik.http.routers.wg-tunnel-secure.entrypoints=websecure"
+      # - "traefik.http.routers.wg-tunnel-secure.rule=Host(`youdomain.com`)"
+      # - "traefik.http.routers.wg-tunnel-secure.tls=true"
+      # - "traefik.http.routers.wg-tunnel-secure.tls.certresolver=cloudflare"
+      # - "traefik.http.routers.wg-tunnel-secure.service=wg-tunnel"
+      # - "traefik.http.services.wg-tunnel.loadbalancer.server.port=5800"
+      # - "traefik.docker.network=proxy"
+
+# Traefik
+# networks:
+  # proxy:
+    # external: true
